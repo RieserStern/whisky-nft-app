@@ -47,18 +47,18 @@ const GradientButton = ({
 		dark={dark}
 	>
 		{as === 'link' ? (
-			<button alt="1" className="innerButton w-100 text-center text-decoration-none">
+			<span className="innerButton w-100 text-center text-decoration-none">
 				{text}
-			</button>
+			</span>
 		) : (
-			<a
+			<span
 				className="innerButton w-100 text-center text-decoration-none"
 				onClick={onClick}
 				value={value}
 				type={type}
 				fontSize={fontSize}
 				disabled={disabled}
-			>{text}</a>
+			>{text}</span>
 		)}
 	</ButtonBase>
 );
