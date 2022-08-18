@@ -1,14 +1,14 @@
 @font-face {
-    font-family: 'THICCCBOI-REGULAR';
-    src: url('Fonts/THICCCBOI-Regular.woff2');
+    font-family: Spacegrotesk, sans-serif;
+    /* src: url('Fonts/THICCCBOI-Regular.woff2'); */
 }
 
 @font-face {
     font-family: 'THICCCBOI-BOLD';
-    src: url('Fonts/THICCCBOI-Bold.woff2');
+    /* src: url('Fonts/THICCCBOI-Bold.woff2'); */
 }
 
 @font-face {
     font-family: 'THICCCBOI-LIGHT';
-    src: url('Fonts/THICCCBOI-Light.woff2');
+    /* src: url('Fonts/THICCCBOI-Light.woff2'); */
 }

@@ -139,10 +139,10 @@ const Home = ({ theme }) => {
             <div className="row pt-5 d-flex justify-content-center container m-auto p-0">
                 <div className="col-12 col-lg-6 col-xxl-5 d-flex align-items-center justify-content-center">
                     <div className="my-5">
-                    <Heading size="48px" bold className="mb-0">
+                    <Heading size="50px" bold className="mb-0">
                         Non-Custodial,
                     </Heading>
-                    <GradientHeading size="48px" bold>
+                    <GradientHeading size="50px" bold>
                         Whisky NFT MarketPlace
                     </GradientHeading>
         
