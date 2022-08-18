@@ -88,7 +88,6 @@ const App = () => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
-        style={modalStyle}
       >
         <Modal.Header closeButton>
           <Modal.Title>Whisky Bar</Modal.Title>
