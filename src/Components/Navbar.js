@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { InvisibleButton } from '../Buttons/Buttons';
-import ConnectWalletButton from '../Buttons/ConnectWalletButton';
+// import ConnectWalletButton from '../Buttons/ConnectWalletButton';
 import GradientButton from "../Buttons/GradientButton";
-import Paragraph from './Paragraph';
-import { textAlign } from '@mui/system';
+// import Paragraph from './Paragraph';
+// import { textAlign } from '@mui/system';
 
 const ThemeBarContainer = styled.div(({ theme, isLight }) => css`
     height: 50px;
@@ -51,12 +51,12 @@ export const useDarkMode = () => {
     return [theme, toggleTheme];
 };
 
-const NavActionButton = styled(InvisibleButton)(({ theme }) => css`
-	color: ${theme.colors.primary_cta};
-	&:hover {
-		color: ${theme.colors.text_primary};
-	}
-`);
+// const NavActionButton = styled(InvisibleButton)(({ theme }) => css`
+// 	color: ${theme.colors.primary_cta};
+// 	&:hover {
+// 		color: ${theme.colors.text_primary};
+// 	}
+// `);
 
 const walletStyle = {
 	marginRight: '20px',

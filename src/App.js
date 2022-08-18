@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import "./Fonts.css";
+import styled, { css } from 'styled-components';
 import { useSelector, useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import Axios from "axios";
@@ -59,6 +60,19 @@ const App = () => {
     // });
   };
 
+  const modal = styled.div(({ theme, isLight }) => css`
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: ${theme.colors.primary_cta};
+  
+    i {
+      font-size: 16px;
+      color: ${isLight ? theme.colors.actual_white : '#696969'};
+    };
+  `);
+  
+
   useEffect(() => {
     getUserLoginStatus();
     handleShow();
@@ -74,6 +88,7 @@ const App = () => {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        style={modalStyle}
       >
         <Modal.Header closeButton>
           <Modal.Title>Whisky Bar</Modal.Title>

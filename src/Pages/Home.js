@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { PageBody } from "../Components/FormInputs";
 import Heading from "../Components/Heading";
 import GradientButton from "../Buttons/GradientButton";
-import { SecondaryButton, LinkButton } from "../Buttons/Buttons";
+import { SecondaryButton } from "../Buttons/Buttons";
 import Paragraph from "../Components/Paragraph";
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -96,43 +96,43 @@ const AccentShape = styled.img(
   `
 );
 
-const SliderBar = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    };
+// const SliderBar = () => {
+//     const settings = {
+//         dots: true,
+//         infinite: true,
+//         speed: 500,
+//         slidesToShow: 1,
+//         slidesToScroll: 1
+//     };
 
-    return (
-        <div>
-          <Slider {...settings}>
-            <div>
-              <h3>1</h3>
-            </div>
-            <div>
-              <h3>2</h3>
-            </div>
-            <div>
-              <h3>3</h3>
-            </div>
-            <div>
-              <h3>4</h3>
-            </div>
-            <div>
-              <h3>5</h3>
-            </div>
-            <div>
-              <h3>6</h3>
-            </div>
-          </Slider>
-        </div>
-    )
-}
+//     return (
+//         <div>
+//           <Slider {...settings}>
+//             <div>
+//               <h3>1</h3>
+//             </div>
+//             <div>
+//               <h3>2</h3>
+//             </div>
+//             <div>
+//               <h3>3</h3>
+//             </div>
+//             <div>
+//               <h3>4</h3>
+//             </div>
+//             <div>
+//               <h3>5</h3>
+//             </div>
+//             <div>
+//               <h3>6</h3>
+//             </div>
+//           </Slider>
+//         </div>
+//     )
+// }
 
 const Home = ({ theme }) => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <PageBody>
