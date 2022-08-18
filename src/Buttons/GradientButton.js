@@ -51,14 +51,14 @@ const GradientButton = ({
 				{text}
 			</a>
 		) : (
-			<button
+			<a
 				className="innerButton w-100 text-center text-decoration-none"
 				onClick={onClick}
 				value={value}
 				type={type}
 				fontSize={fontSize}
 				disabled={disabled}
-			>{text}</button>
+			>{text}</a>
 		)}
 	</ButtonBase>
 );

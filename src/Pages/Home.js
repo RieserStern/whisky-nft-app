@@ -7,10 +7,14 @@ import { SecondaryButton, LinkButton } from "../Buttons/Buttons";
 import Paragraph from "../Components/Paragraph";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// Images
+import MobileAccentShapeDark from "../Assets/SVG/mobile-accent-shape-dark.svg";
+import MobileAccentShapeLight from "../Assets/SVG/mobile-accent-shape-light.svg";
 
 import { useNavigate } from "react-router";
 
@@ -133,7 +137,80 @@ const Home = ({ theme }) => {
     return (
         <PageBody>
             <div className="row pt-5 d-flex justify-content-center container m-auto p-0">
-                <SliderBar />
+                <div className="col-12 col-lg-6 col-xxl-5 d-flex align-items-center justify-content-center">
+                    <div className="my-5">
+                    <Heading size="48px" bold className="mb-0">
+                        Non-Custodial,
+                    </Heading>
+                    <GradientHeading size="48px" bold>
+                        Whisky NFT MarketPlace
+                    </GradientHeading>
+        
+                    <div className="row mt-5 pt-5">
+                        <div className="col-12 col-sm-6">
+                        <GradientButton
+                            text="Sign Up"
+                            className="w-100 mb-3"
+                            fontSize="20px"
+                        />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                        <SecondaryButton
+                            className="w-100"
+                            round
+                            color="navyGrey"
+                            textColor="white"
+                            text="How it Works"
+                            boldText={false}
+                        />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-12 col-lg-6 col-xxl-7 position-relative">
+                    <Showcase theme={theme} />
+                    <AccentShape
+                    src={
+                        theme === "dark" ? MobileAccentShapeDark : MobileAccentShapeLight
+                    }
+                    alt="dasd"
+                    className="d-sm-none"
+                    />
+                </div>
+            </div>
+            <div className="container mt-4">
+                <div className="row justify-content-center mb-4">
+                <IconCard
+                    link="solana"
+                    title="Solana"
+                    // icon={IconSolana}
+                    text="The open-source crypto with the fastest responsive speed and rapidly growing ecosystem."
+                >
+                    {/* <img src={IconSolana} alt="Solana" className="mb-3" /> */}
+                </IconCard>
+                <IconCard
+                    link="solana"
+                    title="Lumos Rewards"
+                    text="Our SPL asset focused on providing users an incentive to trade regularly, event participation & referrals."
+                >
+                    {/* <img src={IconLumosRewards} alt="Lumos" className="mb-3" /> */}
+                </IconCard>
+                <IconCard
+                    title="KIN"
+                    text="The open-source crypto with the fastest responsive speed and rapidly growing ecosystem."
+                >
+                    {/* <img src={IconKin} alt="KIN" className="mb-3" /> */}
+                </IconCard>
+                <IconCard
+                    title="COPE"
+                    text="The open-source crypto with the fastest responsive speed and rapidly growing ecosystem."
+                >
+                    {/* <div className="mb-3">
+                    <CopeIcon />
+                    </div> */}
+                </IconCard>
+                </div>
+
             </div>
         </PageBody>
     )
