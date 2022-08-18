@@ -8,9 +8,8 @@ import Paragraph from './Paragraph';
 import { textAlign } from '@mui/system';
 
 const ThemeBarContainer = styled.div(({ theme, isLight }) => css`
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
     height: 50px;
-    background-color: gainsboro;
+	background-color: rgba(246, 245, 242, 0.85);
 	
 	.inner { 
 		background: ${isLight ? '#E5E5E5' : '#696969'};
