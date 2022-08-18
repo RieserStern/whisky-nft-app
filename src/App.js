@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import "./Fonts.css";
 import styled, { css } from 'styled-components';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import Axios from "axios";
+// import Axios from "axios";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
-  Navigate,
-  Outlet,
 } from "react-router-dom";
 import Home from "./Pages/Home";
 
@@ -29,21 +26,21 @@ export const AppUrl = "http://localhost:3001";
 
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const cookieConsent = getCookieConsentValue();
-  const [checkedOne, setCheckedOne] = useState(false);
-  const [checkedTwo, setCheckedTwo] = useState(false);
+  // const cookieConsent = getCookieConsentValue();
+  // const [checkedOne, setCheckedOne] = useState(false);
+  // const [checkedTwo, setCheckedTwo] = useState(false);
 
-  const [necessaryConsent, updateNecessaryConsent] = useState("denied");
-  const [analyticsConsent, updateAnalyticsConsent] = useState("denied");
-  const [marketingConsent, updateMarketingConsent] = useState("denied");
+  // const [necessaryConsent, updateNecessaryConsent] = useState("denied");
+  // const [analyticsConsent, updateAnalyticsConsent] = useState("denied");
+  // const [marketingConsent, updateMarketingConsent] = useState("denied");
 
 
   const [theme, toggleTheme] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
-  const [currency, setCurrency] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  // const [currency, setCurrency] = useState("");
+  // const [loginStatus, setLoginStatus] = useState("");
   
   const [show, setShow] = useState(false);
 
@@ -60,23 +57,23 @@ const App = () => {
     // });
   };
 
-  const modal = styled.div(({ theme, isLight }) => css`
-    width: 20px;
-    height: 20px;
-    border-radius: 50px;
-    background: ${theme.colors.primary_cta};
+  // const modal = styled.div(({ theme, isLight }) => css`
+  //   width: 20px;
+  //   height: 20px;
+  //   border-radius: 50px;
+  //   background: ${theme.colors.primary_cta};
   
-    i {
-      font-size: 16px;
-      color: ${isLight ? theme.colors.actual_white : '#696969'};
-    };
-  `);
+  //   i {
+  //     font-size: 16px;
+  //     color: ${isLight ? theme.colors.actual_white : '#696969'};
+  //   };
+  // `);
   
 
   useEffect(() => {
     getUserLoginStatus();
     handleShow();
-  }, [loginStatus]);
+  }, []);
 
   // console.log(themeMode)
 
@@ -118,20 +115,20 @@ const App = () => {
           <Navbar
             theme={theme}
             toggleTheme={toggleTheme}
-            loginStatus={loginStatus}
+            // loginStatus={loginStatus}
           />
           {/* saves the user's response */}
           <CookieConsent
-              onAccept={() => {
-                updateNecessaryConsent("granted");
-                if (checkedOne === true) {
-                  console.log('YAY')
-                  updateAnalyticsConsent("granted");
-                }
-                if (checkedTwo === true) {
-                  updateMarketingConsent("granted");
-                }
-              }}
+              // onAccept={() => {
+              //   updateNecessaryConsent("granted");
+              //   if (checkedOne === true) {
+              //     console.log('YAY')
+              //     updateAnalyticsConsent("granted");
+              //   }
+              //   if (checkedTwo === true) {
+              //     updateMarketingConsent("granted");
+              //   }
+              // }}
               buttonText="Accept Cookies"
               ariaAcceptLabel="Accept cookies"
               ariaDeclineLabel="Decline cookies"
