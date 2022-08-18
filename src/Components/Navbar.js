@@ -1,92 +1,86 @@
-import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
-import { useNavigate } from "react-router";
-import Axios from "axios";
-import { InvisibleButton } from "../Buttons/Buttons";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { InvisibleButton } from '../Buttons/Buttons';
+import Paragraph from './Paragraph';
 
-import { Link } from 'react-router-dom';
-
-import { AppUrl } from "../App";
-
-const StyledRect = styled.rect(({ theme }) => css`
-	fill: ${theme.colors.primary_cta};
-`);
-
-const MobileMenuIcon = () => (
-	<svg
-		width="30px"
-		height="30px"
-		viewBox="0 0 20 20"
-		version="1.1"
-		xmlns="http://www.w3.org/2000/svg"
-		xmlnsXlink="http://www.w3.org/1999/xlink"
-	>
-		<title>Mobile Menu</title>
-		<g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-			<StyledRect id="Rectangle-Copy" fill="" x="0" y="0" width="30" height="2"></StyledRect>
-			<StyledRect id="Rectangle-Copy-3" fill="" x="0" y="6" width="30" height="2"></StyledRect>
-			<StyledRect id="Rectangle-Copy-4" fill="" x="0" y="12" width="30" height="2"></StyledRect>
-		</g>
-	</svg>
-);
-
-// Components
-const Base = styled.div(({ theme }) => css`
-	background: ${theme.colors.base_bg};
-	font-family: Arial, Helvetica, sans-serif;
-
-	.fixedHeight {
-		min-height: 80px;
-	}
-
-	svg g {
-		fill: ${theme.colors.primary_cta};
+const ThemeBarContainer = styled.div(({ theme, isLight }) => css`
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+    top: 0px;
+	
+	.inner { 
+		background: ${isLight ? '#E5E5E5' : '#696969'};
+		width: 44px;
+		border-radius: 50px;
+		justify-content: ${isLight ? 'flex-end' : 'flex-start'};
 	}
 `);
 
-const MenuBase = styled.div(({ theme }) => css`
-	background: ${theme.colors.base_bg};
-	z-index: 2;
-	color: ${theme.colors.primary_cta};
-`);
+const CircleToggle = styled.div(({ theme, isLight }) => css`
+	width: 20px;
+	height: 20px;
+	border-radius: 50px;
+	background: ${theme.colors.primary_cta};
 
-const NavActionButton = styled(InvisibleButton)(({ theme }) => css`
-	color: ${theme.colors.primary_cta};
-	&:hover {
-		color: ${theme.colors.text_primary};
-	}
-`);
-
-const MobileProfileLink = styled.i(({ theme }) => css`
-	color: ${theme.colors.primary_cta};
-	font-size: 30px; 
-`);
-
-const Navbar = ({ loginStatus }) => {
-	const [showMobileMenu, setMenuOpen] = useState(false);
-
-	const navigate = useNavigate();
-
-	const logOut = () => {
-		Axios.post(`${AppUrl}/logout`).then((response) => {
-			if (response.status === 200){
-				localStorage.removeItem("token");
-				navigate("/Login");
-				window.location.reload(true);
-			}
-		});
+	i {
+		font-size: 16px;
+		color: ${isLight ? theme.colors.actual_white : '#696969'};
 	};
+`);
 
-	useEffect(() => [loginStatus]);
+export const useDarkMode = () => {
+    const [theme, setTheme] = useState('light');
+    const toggleTheme = () => {
+      if (theme === 'light') {
+        window.localStorage.setItem('theme', 'dark')
+        setTheme('dark')
+      } else {
+        window.localStorage.setItem('theme', 'light')
+        setTheme('light')
+      }
+    };
+  
+    useEffect(() => {
+      const localTheme = window.localStorage.getItem('theme');
+      localTheme && setTheme(localTheme);
+    }, []);
+
+    return [theme, toggleTheme];
+};
+
+
+const Navbar = ({ theme, toggleTheme, loginStatus }) => {
+    const isLight = theme === 'light';
 
     return (
-        <Base className="d-flex justify-content-center">
-            <div className="container d-flex fixedHeight">
+		<ThemeBarContainer isLight={isLight} className="pt-3">
+			<div className="container d-flex justify-content-between">
+				<InvisibleButton onClick={toggleTheme} className="p-0">
+					{isLight ? (
+						<div className="inner d-flex align-items-center p-0">
+							<CircleToggle isLight={isLight}>
+								<i className="material-icons">brightness_6</i>
+							</CircleToggle>
+						</div>
+					) : (
+						<div className="inner d-flex align-items-center p-0">
+							<CircleToggle isLight={isLight}>
+								<i className="material-icons">brightness_6</i>
+							</CircleToggle>
+						</div>
+					)}
+				</InvisibleButton>
+			</div>
+			<div className="container d-flex fixedHeight">
 					<a href="/">Whisky</a>
-            </div>
-        </Base>
+			</div>
+		</ThemeBarContainer>
     )
+};
 
+Navbar.propTypes = {
+  theme: PropTypes.string.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 }
 
 export default Navbar;

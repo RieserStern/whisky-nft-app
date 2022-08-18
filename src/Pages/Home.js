@@ -6,6 +6,10 @@ import GradientButton from "../Buttons/GradientButton";
 import { SecondaryButton, LinkButton } from "../Buttons/Buttons";
 import Paragraph from "../Components/Paragraph";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 import { useNavigate } from "react-router";
@@ -88,12 +92,49 @@ const AccentShape = styled.img(
   `
 );
 
+const SliderBar = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+
+    return (
+        <div>
+          <Slider {...settings}>
+            <div>
+              <h3>1</h3>
+            </div>
+            <div>
+              <h3>2</h3>
+            </div>
+            <div>
+              <h3>3</h3>
+            </div>
+            <div>
+              <h3>4</h3>
+            </div>
+            <div>
+              <h3>5</h3>
+            </div>
+            <div>
+              <h3>6</h3>
+            </div>
+          </Slider>
+        </div>
+    )
+}
+
 const Home = ({ theme }) => {
     const navigate = useNavigate();
 
     return (
         <PageBody>
-            <h3>ssdsdsdsdsdsdsd</h3>
+            <div className="row pt-5 d-flex justify-content-center container m-auto p-0">
+                <SliderBar />
+            </div>
         </PageBody>
     )
 

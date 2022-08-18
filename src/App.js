@@ -4,7 +4,6 @@ import "./Fonts.css";
 import { useSelector, useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import Axios from "axios";
-import Navbar from "./Components/Navbar";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +15,7 @@ import {
 import Home from "./Pages/Home";
 
 
-import ThemeToggler, { useDarkMode } from "./Components/ThemeToggler";
+import Navbar, { useDarkMode } from "./Components/Navbar";
 import { darkTheme, lightTheme } from "./Constants/Theme";
 
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
@@ -63,12 +62,11 @@ const App = () => {
     <React.Fragment>
       <ThemeProvider theme={themeMode}>
         <Router>
-          <ThemeToggler
+          <Navbar
             theme={theme}
             toggleTheme={toggleTheme}
-            currency={currency}
+            loginStatus={loginStatus}
           />
-          <Navbar loginStatus={loginStatus} />
           {/* saves the user's response */}
           <CookieConsent
               onAccept={() => {
