@@ -20,6 +20,8 @@ import { darkTheme, lightTheme } from "./Constants/Theme";
 
 import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
 
+import { Button, Modal } from 'react-bootstrap';
+
 export const AppUrl = "http://localhost:3001";
 // export const AppUrlNoPort = "http://localhost";
 // export const SocketUrl = "http://localhost:3002";
@@ -41,6 +43,11 @@ const App = () => {
   const themeMode = theme === "light" ? lightTheme : darkTheme;
   const [currency, setCurrency] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
+  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getUserLoginStatus = () => {
     // Axios.get(`${AppUrl}/login`).then((response) => {
@@ -54,9 +61,41 @@ const App = () => {
 
   useEffect(() => {
     getUserLoginStatus();
+    handleShow();
   }, [loginStatus]);
 
   // console.log(themeMode)
+
+  const AgeModal = () => {
+    console.log();
+    return (
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Whisky Bar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>To visit our website, you must be of legal drinking/purchasing age in your location of residence. If there is no legal age for consuming alcohol in your location, you must be over 21.</p>
+          <br />
+          <h2>ARE YOU 21 YEARS OF AGE?</h2>
+          <p>By clicking YES, you confirm that you are the required age of your country to visit our website, you accept Terms and Conditions and you declare that you have read our Privacy & Cookies notice.</p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            NO
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            YES, I AM
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+
+  }
 
   return (
     <React.Fragment>
@@ -88,6 +127,7 @@ const App = () => {
               <br/><br/>
               For more detailed information about personal data collected via cookies and the cookies we use, click here.
           </CookieConsent>
+          <AgeModal />
           <Routes>
             {/* Unprotected Routes */}
             <Route path="/" element={<Home theme={theme} />} />

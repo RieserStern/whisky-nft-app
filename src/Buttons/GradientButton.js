@@ -77,7 +77,7 @@ GradientButton.defaultProps = {
     text: 'Button Text',
 	linkTo: '#',
 	as: 'button',
-	fontSize: '16px',
+	fontSize: '12px',
 	padding: '7px 25px',
 	borderSize: '3px',
 	dark: false,

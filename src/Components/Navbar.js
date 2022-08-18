@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { InvisibleButton } from '../Buttons/Buttons';
+import ConnectWalletButton from '../Buttons/ConnectWalletButton';
+import GradientButton from "../Buttons/GradientButton";
 import Paragraph from './Paragraph';
+import { textAlign } from '@mui/system';
 
 const ThemeBarContainer = styled.div(({ theme, isLight }) => css`
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-    top: 0px;
+    height: 50px;
+    background-color: gainsboro;
 	
 	.inner { 
 		background: ${isLight ? '#E5E5E5' : '#696969'};
@@ -48,13 +52,43 @@ export const useDarkMode = () => {
     return [theme, toggleTheme];
 };
 
+const NavActionButton = styled(InvisibleButton)(({ theme }) => css`
+	color: ${theme.colors.primary_cta};
+	&:hover {
+		color: ${theme.colors.text_primary};
+	}
+`);
+
+const walletStyle = {
+	marginRight: '20px',
+	marginBottom: "10px"
+}
+
+const themeToggleStyle = {
+	left: '20px',
+	marginBottom: "10px"
+}
+
+const ethereum = window.ethereum;
+let address = null
+let account = null
 
 const Navbar = ({ theme, toggleTheme, loginStatus }) => {
     const isLight = theme === 'light';
 
+	async function ConnectWallet() {
+		if (address === null || account === null){
+		  const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+		  account = accounts[0]
+		  address = ethereum.selectedAddress
+		}
+	
+		console.log(address);
+	};
+
     return (
-		<ThemeBarContainer isLight={isLight} className="pt-3">
-			<div className="container d-flex justify-content-between">
+		<ThemeBarContainer isLight={isLight} className="pt-3 Navbar position-fixed top-0 left-0 w-100 d-flex d-flex col-12 justify-content-between align-items-center">
+			<div className="container d-flex justify-content-between d-none d-lg-block m-auto" style={themeToggleStyle}>
 				<InvisibleButton onClick={toggleTheme} className="p-0">
 					{isLight ? (
 						<div className="inner d-flex align-items-center p-0">
@@ -71,8 +105,8 @@ const Navbar = ({ theme, toggleTheme, loginStatus }) => {
 					)}
 				</InvisibleButton>
 			</div>
-			<div className="container d-flex fixedHeight">
-					<a href="/">Whisky</a>
+			<div className="d-none d-lg-block" style={walletStyle}>
+				<GradientButton text="Connect Wallet" onClick={() => ConnectWallet()} />
 			</div>
 		</ThemeBarContainer>
     )
