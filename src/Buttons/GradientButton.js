@@ -46,8 +46,8 @@ const GradientButton = ({
 		borderSize={borderSize}
 		dark={dark}
 	>
-		{/* {as === 'link' ? (
-			<a href={linkTo} alt="1" className="innerButton w-100 text-center text-decoration-none">
+		{as === 'link' ? (
+			<a alt="1" className="innerButton w-100 text-center text-decoration-none">
 				{text}
 			</a>
 		) : (
@@ -59,7 +59,7 @@ const GradientButton = ({
 				fontSize={fontSize}
 				disabled={disabled}
 			>{text}</a>
-		)} */}
+		)}
 	</ButtonBase>
 );
 
