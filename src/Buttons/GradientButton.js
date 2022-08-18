@@ -47,9 +47,9 @@ const GradientButton = ({
 		dark={dark}
 	>
 		{as === 'link' ? (
-			<a alt="1" className="innerButton w-100 text-center text-decoration-none">
+			<button alt="1" className="innerButton w-100 text-center text-decoration-none">
 				{text}
-			</a>
+			</button>
 		) : (
 			<a
 				className="innerButton w-100 text-center text-decoration-none"
