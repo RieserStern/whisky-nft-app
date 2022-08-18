@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
 import "./Fonts.css";
-import styled, { css } from 'styled-components';
-import { useDispatch } from "react-redux";
+// import styled, { css } from 'styled-components';
+// import { useDispatch } from "react-redux";
 import { ThemeProvider } from "styled-components";
 // import Axios from "axios";
 import {
@@ -16,7 +16,7 @@ import Home from "./Pages/Home";
 import Navbar, { useDarkMode } from "./Components/Navbar";
 import { darkTheme, lightTheme } from "./Constants/Theme";
 
-import CookieConsent, { getCookieConsentValue } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 
 import { Button, Modal } from 'react-bootstrap';
 

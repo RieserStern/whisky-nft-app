@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import MobileAccentShapeDark from "../Assets/SVG/mobile-accent-shape-dark.svg";
 import MobileAccentShapeLight from "../Assets/SVG/mobile-accent-shape-light.svg";
 
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 const ShowcaseBase = styled.div(
   ({ theme, currentTheme }) => css`

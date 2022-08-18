@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from "styled-components";
-import { lighten, darken } from 'polished';
+import { darken } from 'polished';
 
 const ButtonBase = styled.button(({ 
     theme, round, size, textColor, boldText, fontSize
